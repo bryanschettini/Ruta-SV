@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Paleta inspirada en El Salvador: océano Pacífico, piedra volcánica y atardecer. */
+:root {
+  --background: #fbf8f3;
+  --foreground: #1c2321;
+  --muted: #5d6965;
+  --card: #ffffff;
+  --border: #e6e0d6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-ocean-50: #ecfbf9;
+  --color-ocean-100: #cdf3ee;
+  --color-ocean-500: #0f9488;
+  --color-ocean-600: #0b766e;
+  --color-ocean-700: #0b5e58;
+  --color-ocean-900: #083d3a;
+  --color-sunset-100: #fdeedd;
+  --color-sunset-400: #f5a35b;
+  --color-sunset-500: #ec7f2d;
+  --color-sunset-600: #d2621b;
+  --color-volcano-800: #2a2f2d;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Animación suave para los esqueletos de carga */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #ece6db;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}
